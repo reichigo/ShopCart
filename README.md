@@ -41,7 +41,7 @@ The easiest way to run the application is using Docker Compose:
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/shopcart.git
+git clone https://github.com/reichigo/ShopCart.git
 cd shopcart
 
 # Start the application and dependencies
@@ -57,7 +57,7 @@ This will start:
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/shopcart.git
+git clone https://github.com/reichigo/ShopCart.git
 cd shopcart
 
 # Start dependencies (SQL Server and Redis)
@@ -72,8 +72,8 @@ dotnet run
 
 Once the application is running, you can explore the API using:
 
-- **Swagger UI**: http://localhost:8080/swagger
-- **Stoplight Elements**: http://localhost:8080/elements
+- **Swagger UI**: http://localhost:7054/swagger
+- **Stoplight Elements**: http://localhost:7054/elements
 
 ## API Endpoints
 
