@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopCart API - Stoplight Elements</title>
+    <link rel="stylesheet" href="https://unpkg.com/@stoplight/elements/styles.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+        }
+        #elements-container {
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="elements-container"></div>
+    
+    <script src="https://unpkg.com/@stoplight/elements/web-components.min.js"></script>
+    <script>
+        const apiUrl = window.location.origin + '/swagger/v1/swagger.json';
+        
+        // Create the Stoplight Elements component
+        const elements = document.createElement('elements-api');
+        elements.setAttribute('apiDescriptionUrl', apiUrl);
+        elements.setAttribute('router', 'hash');
+        elements.setAttribute('layout', 'sidebar');
+        
+        // Add it to the container
+        document.getElementById('elements-container').appendChild(elements);
+    </script>
+</body>
+</html>

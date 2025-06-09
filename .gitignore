@@ -1,0 +1,109 @@
+## Compilação do .NET
+bin/
+obj/
+out/
+artifacts/
+
+# VS Code settings
+.vscode/
+
+# VS e Rider
+.vs/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.sdf
+*.cache
+*.dbmdl
+
+# Arquivos de log do Visual Studio
+*.log
+
+# Rider
+.idea/
+*.sln.iml
+
+# Teste/coverage
+TestResults/
+*.TestResults/
+*.coverage
+*.coveragexml
+*.sonarqube/
+
+# Arquivos de publicação do dotnet
+publish/
+AppPackages/
+BundleArtifacts/
+
+# Arquivos de pacote do NuGet
+*.nupkg
+*.snupkg
+*.nuspec
+packages/
+.nuget/
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Dados de usuário
+*.userprefs
+*.user
+*.vspscc
+*.vssscc
+*.pdb
+
+# Arquivos de backup temporários
+*_i.c
+*_p.c
+*_h.h
+*.bak
+*.swp
+*~.nib
+
+# Arquivos do sistema
+.DS_Store
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+# Arquivos específicos de builds antigos do ASP.NET
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+
+# Arquivos de pacotes do Azure e Service Fabric
+*.Publish.xml
+*.azurePubxml
+*.pubxml.user
+
+# Outros arquivos temporários ou cache
+*.tmp
+*.temp
+
+# Arquivos específicos do Windows
+*.db
+
+# Arquivos de configuração de containers
+docker-compose.override.yml
+
+# Configuração de senhas/ambiente
+appsettings.Development.json
+appsettings.Local.json
+secrets.json
+.env
+.env.*
+
+# IDE JetBrains Rider
+.idea/
+*.sln.iml
+
+# Pasta do Visual Studio Code
+.history/
+
+# Configuração do git-crypt
+.git-crypt/
+
+# Diretório de dependências globais do dotnet
+.dotnet/
