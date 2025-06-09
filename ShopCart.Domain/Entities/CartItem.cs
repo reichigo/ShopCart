@@ -1,3 +1,5 @@
+using System.Text.Json.Serialization;
+
 namespace ShopCart.Domain.Entities;
 
 public class CartItem(Product product, int quantity)

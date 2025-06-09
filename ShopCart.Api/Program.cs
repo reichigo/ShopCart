@@ -11,6 +11,7 @@ using ShopCart.Infrastructure.Repositories.Datasource.SqlServerDataSource;
 using StackExchange.Redis;
 using DbContext = ShopCart.Infrastructure.DbContext;
 using ShopCart.Api.Middleware;
+using ShopCart.Infrastructure.Cache.RedisDataCache.RedisDataModel;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,7 +25,7 @@ if (builder.Environment.IsDevelopment())
 
 var app = builder.Build();
 
-// Adicionar o middleware de tratamento de exceções antes de outros middlewares
+// Add exception handling middleware before other middlewares
 app.UseExceptionHandling();
 
 if (app.Environment.IsDevelopment())
@@ -67,7 +68,7 @@ void RegisterServices(IServiceCollection services, IConfiguration configuration)
     services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect(redisConnection));
     
     // Cache providers - Scoped
-    services.AddScoped<IRedisCacheProvider, RedisCacheProvider>();
+    services.AddScoped<IRedisCacheProvider<CartRedisDataModel>, RedisCacheProvider<CartRedisDataModel>>();
     services.AddScoped<ICartRedisDataCache, CartRedisDataCache>();
     services.AddScoped<ICartCache, CartCache>();
     

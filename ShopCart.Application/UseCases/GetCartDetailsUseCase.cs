@@ -16,6 +16,8 @@ public class GetCartDetailsUseCase(ICartRepository cartRepository, ICartCache ca
         
         var cart = await cartRepository.GetByIdAsync(cartId) ?? throw new GlobalException("Product not found.", HttpStatusCode.NotFound);
         
+        await cartCache.CreateAsync(cart, TimeSpan.FromMinutes(10));
+        
         return cart;
     }
 }

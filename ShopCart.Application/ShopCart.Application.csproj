@@ -7,10 +7,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Dtos\" />
-    </ItemGroup>
-
-    <ItemGroup>
       <ProjectReference Include="..\ShopCart.CrossCutting\ShopCart.CrossCutting.csproj" />
       <ProjectReference Include="..\ShopCart.Domain\ShopCart.Domain.csproj" />
     </ItemGroup>

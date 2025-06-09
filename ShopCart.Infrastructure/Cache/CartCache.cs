@@ -1,25 +1,26 @@
 using ShopCart.Application.Interfaces;
 using ShopCart.Domain.Entities;
 using ShopCart.Infrastructure.Cache.RedisDataCache;
+using ShopCart.Infrastructure.Mappers;
 
 namespace ShopCart.Infrastructure.Cache;
 
-public class CartCache(IRedisCacheProvider redisCache) : ICartCache
+public class CartCache(ICartRedisDataCache redisCache) : ICartCache
 {
-    private static string GetKey(Guid cartId) => $"cart-total:{cartId}";
-
-    public Task<Cart?> GetAsync(Guid cartId)
+    public async Task<Cart?> GetAsync(Guid cartId)
     {
-        return redisCache.GetAsync<Cart?>(GetKey(cartId));
+        var cart = await redisCache.GetAsync(cartId.ToString());
+        
+        return cart?.ToDomain();
     }
 
     public Task CreateAsync(Cart cart, TimeSpan expiration)
     {
-        return redisCache.SetAsync(GetKey(cart.Id), cart, expiration);
+        return redisCache.SetAsync(cart.Id.ToString(), cart.ToRedisDatamodel(), expiration);
     }
 
     public Task InvalidateCacheAsync(Guid cartId)
     {
-        return redisCache.RemoveAsync(GetKey(cartId));
+        return redisCache.RemoveAsync(cartId.ToString());
     }
 }

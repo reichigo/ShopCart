@@ -14,6 +14,8 @@ public class AddItemToCartUseCase(
     {
         var cart = await cartRepository.GetByIdAsync(cartId);
 
+        if(quantity <= 0) throw new ArgumentException("Quantity must be greater than 0");
+        
         if (cart == null)
         {
             await cartCache.InvalidateCacheAsync(cart.Id);

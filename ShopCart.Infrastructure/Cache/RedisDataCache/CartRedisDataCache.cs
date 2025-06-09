@@ -1,24 +1,25 @@
-using ShopCart.Application.Interfaces;
+
+using ShopCart.Infrastructure.Cache.RedisDataCache.RedisDataModel;
 using StackExchange.Redis;
 
 namespace ShopCart.Infrastructure.Cache.RedisDataCache;
 
-public class CartRedisDataCache(IConnectionMultiplexer redis) 
-    : RedisCacheProvider(redis), ICartRedisDataCache
+public class CartRedisDataCache(IConnectionMultiplexer redis)
+    : RedisCacheProvider<CartRedisDataModel>(redis), ICartRedisDataCache
 {
-    private static string GetKey(Guid cartId) => $"cart-total:{cartId}";
+    private static string GetKey(Guid cartId) => $"cart:{cartId}";
 
-    public Task<decimal?> GetTotalAsync(Guid cartId)
+    public async Task<CartRedisDataModel?> GetAsync(Guid cartId)
     {
-        return GetAsync<decimal?>(GetKey(cartId));
+        return await GetAsync(GetKey(cartId));
     }
 
-    public Task SetTotalAsync(Guid cartId, decimal total, TimeSpan expiration)
+    public Task SetAsync(CartRedisDataModel cartRedisDataModel, TimeSpan expiration)
     {
-        return SetAsync(GetKey(cartId), total, expiration);
+        return SetAsync(GetKey(cartRedisDataModel.Id), cartRedisDataModel, expiration);
     }
 
-    public Task InvalidateTotalAsync(Guid cartId)
+    public Task InvalidateAsync(Guid cartId)
     {
         return RemoveAsync(GetKey(cartId));
     }

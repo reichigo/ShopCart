@@ -1,8 +1,8 @@
 namespace ShopCart.Application.Interfaces;
 
-public interface ICacheProvider
+public interface ICacheProvider<T>
 {
-    Task<T?> GetAsync<T>(string key);
-    Task SetAsync<T>(string key, T value, TimeSpan expiration);
+    Task<T?> GetAsync(string key);
+    Task SetAsync(string key, T value, TimeSpan expiration);
     Task RemoveAsync(string key);
 }

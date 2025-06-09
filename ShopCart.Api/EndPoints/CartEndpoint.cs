@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using ShopCart.Api.Mappers;
 using ShopCart.Api.Requests;
 using ShopCart.Application.Interfaces;
 using ShopCart.Application.UseCases;
@@ -50,7 +51,7 @@ public static class CartEndpoint
         [FromServices] GetCartDetailsUseCase useCase)
     {
         var cart = await useCase.ExecuteAsync(cartId);
-        return cart is null ? Results.NotFound() : Results.Ok(cart);
+        return Results.Ok(cart.ToResponse());
     }
 
     private static async Task<IResult> AddItemToCartAsync(

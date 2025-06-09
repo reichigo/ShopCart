@@ -5,17 +5,17 @@ using StackExchange.Redis;
 
 namespace ShopCart.Infrastructure.Cache.RedisDataCache;
 
-public class RedisCacheProvider(IConnectionMultiplexer redis) : IRedisCacheProvider
+public class RedisCacheProvider<T>(IConnectionMultiplexer redis) : IRedisCacheProvider<T>
 {
     private readonly IDatabase _redis = redis.GetDatabase();
 
-    public async Task<T?> GetAsync<T>(string key)
+    public async Task<T?> GetAsync(string key)
     {
         var data = await _redis.StringGetAsync(key);
         return data.HasValue ? JsonSerializer.Deserialize<T>(data!) : default;
     }
 
-    public Task SetAsync<T>(string key, T value, TimeSpan expiration)
+    public Task SetAsync(string key, T value, TimeSpan expiration)
     {
         var data = JsonSerializer.Serialize(value);
         return _redis.StringSetAsync(key, data, expiration);

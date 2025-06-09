@@ -10,7 +10,7 @@ public class CreateCartUseCase(ICartRepository cartRepository)
     {
         ArgumentException.ThrowIfNullOrEmpty(userId);
         
-        var cart = new Cart(Guid.Parse(userId));
+        var cart = new Cart(Guid.Parse(userId), Guid.NewGuid());
         await cartRepository.CreateAsync(cart);
         return cart.Id;
     }

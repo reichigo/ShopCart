@@ -1,4 +1,4 @@
-## Compilação do .NET
+## .NET compilation
 bin/
 obj/
 out/
@@ -7,7 +7,7 @@ artifacts/
 # VS Code settings
 .vscode/
 
-# VS e Rider
+# VS and Rider
 .vs/
 .idea/
 *.suo
@@ -18,26 +18,26 @@ artifacts/
 *.cache
 *.dbmdl
 
-# Arquivos de log do Visual Studio
+# Visual Studio log files
 *.log
 
 # Rider
 .idea/
 *.sln.iml
 
-# Teste/coverage
+# Test/coverage
 TestResults/
 *.TestResults/
 *.coverage
 *.coveragexml
 *.sonarqube/
 
-# Arquivos de publicação do dotnet
+# dotnet publish files
 publish/
 AppPackages/
 BundleArtifacts/
 
-# Arquivos de pacote do NuGet
+# NuGet package files
 *.nupkg
 *.snupkg
 *.nuspec
@@ -47,14 +47,14 @@ project.lock.json
 project.fragment.lock.json
 artifacts/
 
-# Dados de usuário
+# User data
 *.userprefs
 *.user
 *.vspscc
 *.vssscc
 *.pdb
 
-# Arquivos de backup temporários
+# Temporary backup files
 *_i.c
 *_p.c
 *_h.h
@@ -62,48 +62,48 @@ artifacts/
 *.swp
 *~.nib
 
-# Arquivos do sistema
+# System files
 .DS_Store
 Thumbs.db
 ehthumbs.db
 desktop.ini
 
-# Arquivos específicos de builds antigos do ASP.NET
+# Files from old ASP.NET builds
 _ReSharper*/
 *.[Rr]e[Ss]harper
 *.DotSettings.user
 
-# Arquivos de pacotes do Azure e Service Fabric
+# Azure and Service Fabric package files
 *.Publish.xml
 *.azurePubxml
 *.pubxml.user
 
-# Outros arquivos temporários ou cache
+# Other temporary or cache files
 *.tmp
 *.temp
 
-# Arquivos específicos do Windows
+# Windows-specific files
 *.db
 
-# Arquivos de configuração de containers
+# Container configuration files
 docker-compose.override.yml
 
-# Configuração de senhas/ambiente
+# Password/environment configuration
 appsettings.Development.json
 appsettings.Local.json
 secrets.json
 .env
 .env.*
 
-# IDE JetBrains Rider
+# JetBrains Rider IDE
 .idea/
 *.sln.iml
 
-# Pasta do Visual Studio Code
+# Visual Studio Code folder
 .history/
 
-# Configuração do git-crypt
+# git-crypt configuration
 .git-crypt/
 
-# Diretório de dependências globais do dotnet
+# dotnet global dependencies directory
 .dotnet/

@@ -1,12 +1,15 @@
+using System.Text.Json.Serialization;
+
 namespace ShopCart.Domain.Entities;
 
-public class Cart(Guid userId)
+public class Cart(Guid userId, Guid id)
 {
-    public Guid Id { get; private set; } = Guid.NewGuid();
+    public Guid Id { get; private set; } = id;
     public Guid UserId { get; private set; } = userId;
     public List<CartItem> Items { get; private set; } = [];
     public Discount? AppliedDiscount { get; private set; }
 
+  
     public void AddCartItem(Product product, int quantity)
     {
         var existingItem = Items.FirstOrDefault(i => i.Product.Id == product.Id);
@@ -32,11 +35,9 @@ public class Cart(Guid userId)
         AppliedDiscount = discount;
     }
 
-// Vou deixar um comentário explicando o motivo aqui hahaha. Eu realmente não acho uma boa armazenar o total em cache.
-// Isso é muito volátil e pode causar comportamentos inesperados, por isso decidi colocar esse método aqui.
     public Money CalculateTotal()
     {
-        var total = Items.Sum(x => x.Product.Price.Amount);
+        var total = Items.Sum(x => x.Product.Price.Amount * x.Quantity);
 
         if (AppliedDiscount != null)
             total -= AppliedDiscount.CalculateDiscount(total);

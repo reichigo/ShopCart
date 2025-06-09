@@ -1,9 +1,18 @@
+using System.Text.Json.Serialization;
+
 namespace ShopCart.Domain.Entities;
 
-public record Money(decimal Amount)
+public class Money
 {
-    public static Money operator +(Money a, Money b) => new Money(a.Amount + b.Amount);
-    public static Money operator -(Money a, Money b) => new Money(a.Amount - b.Amount);
+    public decimal Amount { get; private set; }
 
-    public override string ToString() => Amount.ToString("C");
+    // Construtor sem parâmetros para desserialização
+    public Money()
+    {
+        Amount = 0;
+    }
+    public Money(decimal amount)
+    {
+        Amount = amount;
+    }
 }

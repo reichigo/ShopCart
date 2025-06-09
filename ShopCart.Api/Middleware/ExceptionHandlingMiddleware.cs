@@ -44,15 +44,13 @@ public class ExceptionHandlingMiddleware
             statusCode = HttpStatusCode.BadRequest;
             message = exception.Message;
         }
-        // se vc descomentar esse trecho, vc pode ver os detalhes do erro no ambiente de desenvolvimento
-        // pode testar :)
-        // else
-        // {
-        //     if (context.RequestServices.GetService<IWebHostEnvironment>()?.IsDevelopment() == true)
-        //     {
-        //         message = exception.Message;
-        //     }
-        // }
+        else
+        {
+            if (context.RequestServices.GetService<IWebHostEnvironment>()?.IsDevelopment() == true)
+            {
+                message = exception.Message;
+            }
+        }
 
         context.Response.ContentType = "application/json";
         context.Response.StatusCode = (int)statusCode;
